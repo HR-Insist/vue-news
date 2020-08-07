@@ -1,0 +1,1 @@
+export const AppCode = "c30289ef818645b4b05c7612e80ae696";
