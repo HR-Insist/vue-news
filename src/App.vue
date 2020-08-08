@@ -1,17 +1,18 @@
 <template>
   <div id="app">
+    <Header></Header>
     <div class="container">
-      <Home></Home>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import Home from "views/home/Home";
+import Header from "components/content/header/Header";
 export default {
   name: "App",
   components: {
-    Home,
+    Header,
   },
 };
 </script>
@@ -19,8 +20,8 @@ export default {
 <style>
 @import "assets/style/global.css";
 @import "assets/style/reset.css";
-#app {
-  width: 1080px;
-  margin: 0 auto;
+
+.container {
+  margin-top: 20px;
 }
 </style>

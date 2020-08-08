@@ -9,8 +9,9 @@
 
 <script>
 import HomeSwiper from "./homeComponents/HomeSwiper";
-import Channels from "./homeComponents/Channels";
-import NewsList from "./homeComponents/NewsList";
+
+import Channels from "components/content/news/Channels";
+import NewsList from "components/content/news/NewsList";
 
 import Loading from "components/common/loading/Loading";
 

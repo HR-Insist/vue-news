@@ -55,7 +55,9 @@ export default {
   computed: {},
   async mounted() {
     await this.handleDom();
-    this.autoPlay();
+    this.$nextTick(() => {
+      this.autoPlay();
+    });
   },
   methods: {
     handleDom() {
@@ -93,33 +95,27 @@ export default {
     },
     // 向左移动
     scrollLeft() {
-      if (this.isScroll) return;
-      this.isScroll = true;
       // 判断当前是否处于第一张图片，
       // 如果是的话，去掉动画，直接跳到复制的最后一张
-      if ((this, this.currentIndex === 1)) {
+      if (this.currentIndex === 1) {
         this.currentIndex = this.slideCount + 1;
         this.setTransformStyle(this.currentIndex, 0);
       }
       // *****关键一步*****
       // 由于vue响应式原理是异步的，所以一定要等到DOM改变后才一定
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.currentIndex--;
         this.setTransformStyle(this.currentIndex);
-        this.isScroll = false;
       });
     },
     scrollRight() {
-      if (this.isScroll) return;
-      this.isScroll = true;
       if (this.currentIndex === this.slideCount) {
         this.currentIndex = 0;
         this.setTransformStyle(this.currentIndex, 0);
       }
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.currentIndex++;
         this.setTransformStyle(this.currentIndex);
-        this.isScroll = false;
       });
     },
   },

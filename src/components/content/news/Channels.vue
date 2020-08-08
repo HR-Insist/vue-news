@@ -14,31 +14,34 @@
 </template>
 
 <script>
-import { getNewsChannels } from "services/newsService";
-
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      channels: [],
       isCollapse: true, //当前频道是否为折叠状态
       currentChannelId: null,
     };
   },
   computed: {
+    ...mapState("channels", ["channels"]),
     showChannels() {
       return this.isCollapse ? this.channels.slice(0, 8) : this.channels;
     },
-  },
-  created() {
-    getNewsChannels().then((value) => {
-      this.channels = value;
-      this.switchTo(this.channels[0].channelId);
-    });
   },
   methods: {
     switchTo(id) {
       this.currentChannelId = id;
       this.$emit("changeChannel", this.currentChannelId);
+    },
+  },
+  watch: {
+    channels: {
+      immediate: true,
+      handler() {
+        if (this.channels.length > 0) {
+          this.switchTo(this.channels[0].channelId);
+        }
+      },
     },
   },
 };
