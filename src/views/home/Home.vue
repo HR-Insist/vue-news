@@ -1,17 +1,17 @@
 <template>
   <div id="home">
     <HomeSwiper></HomeSwiper>
-    <Channels @changeChannel="handleChannelChange"></Channels>
+    <!-- <Channels @changeChannel="handleChannelChange"></Channels> -->
     <Loading v-show="isLoading"></Loading>
-    <NewsList :newsList="newsList" v-show="!isLoading"></NewsList>
+    <!-- <NewsList :newsList="newsList" v-show="!isLoading"></NewsList> -->
   </div>
 </template>
 
 <script>
 import HomeSwiper from "./homeComponents/HomeSwiper";
 
-import Channels from "components/content/news/Channels";
-import NewsList from "components/content/news/NewsList";
+// import Channels from "components/content/news/Channels";
+// import NewsList from "components/content/news/NewsList";
 
 import Loading from "components/common/loading/Loading";
 
@@ -21,8 +21,8 @@ export default {
   name: "Home",
   components: {
     HomeSwiper,
-    Channels,
-    NewsList,
+    // Channels,
+    // NewsList,
     Loading,
   },
   data() {

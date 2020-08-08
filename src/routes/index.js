@@ -7,6 +7,11 @@ const Register = () => import("views/login/Register.vue")
 const ChannelNews = () => import("views/channelNews/ChannelNews.vue")
 const NotFound = () => import("views/404/NotFound.vue")
 
+const routerPush = VueRouter.prototype.push
+VueRouter.prototype.push = function (location) {
+  return routerPush.call(this, location).catch(error => error)
+}
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -35,7 +40,10 @@ const router = new VueRouter({
     {
       path: '/channel/:id',
       name: "ChannelNews",
-      component: ChannelNews
+      component: ChannelNews,
+      // props: (route) => ({
+      //   query: route.query.page
+      // })
     },
     {
       path: "*",

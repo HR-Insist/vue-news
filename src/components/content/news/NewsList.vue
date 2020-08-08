@@ -3,7 +3,7 @@
     <div class="news-item-normal" v-for="item in newsList" :key="item.id">
       <div class="image" v-if="item.havePic">
         <a :href="item.link">
-          <img :src="item.img" :alt="item.title" />
+          <img :src="item.imageurls[0].url" :alt="item.title" />
         </a>
       </div>
       <div class="words">

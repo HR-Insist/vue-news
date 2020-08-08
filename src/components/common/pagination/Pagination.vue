@@ -2,17 +2,17 @@
   <div class="pagination" v-if="total > 0">
     <button
       class="pagination-item"
-      :disabled="currentPage===1"
+      :disabled="currentPage === 1"
       @click.prevent="handlePageChange(1)"
     >首页</button>
     <button
       class="pagination-item"
-      :disabled="currentPage===1"
+      :disabled="currentPage  === 1"
       @click.prevent="handlePageChange(currentPage - 1)"
     >上一页</button>
     <button
       :class="['pagination-item',{'active': item === currentPage}]"
-      :disabled="currentPage===item"
+      :disabled="currentPage === item"
       v-for="item in pageList"
       :key="item"
       @click.prevent="handlePageChange(item)"
@@ -29,12 +29,12 @@
     </span>
     <button
       class="pagination-item"
-      :disabled="currentPage===pageNumber"
+      :disabled="currentPage === pageNumber"
       @click.prevent="handlePageChange(currentPage + 1)"
     >下一页</button>
     <button
       class="pagination-item"
-      :disabled="currentPage===pageNumber"
+      :disabled="currentPage === pageNumber"
       @click.prevent="handlePageChange(pageNumber)"
     >尾页</button>
     <span class="page-text">

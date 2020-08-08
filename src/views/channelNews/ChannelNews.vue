@@ -35,12 +35,10 @@ export default {
       panelNumber: 7,
       limit: 10,
       isLoading: false,
+      currentPage: 1,
     };
   },
   computed: {
-    currentPage() {
-      return +this.$route.query.page || 1;
-    },
     channelType() {
       const channels = this.$store.state.channels.channels;
       if (channels.length > 0) {
@@ -54,11 +52,8 @@ export default {
   },
   methods: {
     handlePageChange(newPage) {
+      this.currentPage = newPage;
       this.$router.push({
-        // name: "ChannelNews",
-        // params: {
-        //   id: this.$route.params.id,
-        // },
         query: {
           page: newPage,
         },
@@ -81,7 +76,7 @@ export default {
     "$route.params.id": {
       immediate: true,
       handler() {
-        this.setNews();
+        this.handlePageChange(1);
       },
     },
   },

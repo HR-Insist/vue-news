@@ -61,7 +61,6 @@ export default {
   padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin-right: 15px;
   margin: 7px 15px 7px 0;
   cursor: pointer;
   position: relative;
