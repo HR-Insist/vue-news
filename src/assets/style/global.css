@@ -45,17 +45,14 @@ body {
 }
 
 button {
+  /* width: 170px;*/
+  /* transition: 0.1s; */
   outline: none;
   border: none;
-  /* width: 170px; */
   font-size: inherit;
-  /* color: #fff; */
-  /* background-color: #409eff;
-  border-color: #409eff; */
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  /* transition: 0.1s; */
   font-weight: 500;
   font-size: 14px;
   border-radius: 4px;

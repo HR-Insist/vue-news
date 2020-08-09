@@ -6,6 +6,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 store.dispatch('channels/fetchChannels')
+store.dispatch('loginUser/whoAmI')
 
 new Vue({
   router,

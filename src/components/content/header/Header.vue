@@ -27,8 +27,15 @@
         </li>
       </ul>
       <div class="user">
-        <router-link :to="{name: 'Login'}">登录</router-link>
-        <router-link :to="{name: 'Reg'}">注册</router-link>
+        <span v-if="isLoading">Loading...</span>
+        <template v-else-if="user">
+          <router-link :to="{name: 'Personal', params: {loginId: user.loginId}}">{{user.nickname}}</router-link>
+          <a @click.prevent="handleLoginOut">退出登录</a>
+        </template>
+        <template v-else>
+          <router-link :to="{name: 'Login'}">登录</router-link>
+          <router-link :to="{name: 'Reg'}">注册</router-link>
+        </template>
       </div>
     </div>
   </div>
@@ -40,6 +47,7 @@ export default {
   name: "Header",
   computed: {
     ...mapState("channels", ["channels"]),
+    ...mapState("loginUser", ["user", "isLoading"]),
   },
   data() {
     return {
@@ -49,6 +57,10 @@ export default {
   methods: {
     showMore() {
       this.isShowMore = !this.isShowMore;
+    },
+    handleLoginOut() {
+      this.$store.dispatch("loginUser/loginOut");
+      this.$router.push({ name: "Login" });
     },
   },
 };
